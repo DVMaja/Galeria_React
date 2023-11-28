@@ -30,6 +30,7 @@ Route::middleware( ['admin'])->group(function () {
 
 //bejelentkezett felhasználó
 Route::middleware('auth.basic')->group(function () {
+    Route::post('/lendings', [LendingController::class, 'store']);
     Route::get('/reservations/{user_id}/{book_id}/{start}', [ReservationController::class, 'show']);
     Route::patch('/reservations/{user_id}/{book_id}/{start}', [ReservationController::class, 'update']);
     Route::post('/reservations', [ReservationController::class, 'store']);
@@ -41,6 +42,15 @@ Route::middleware('auth.basic')->group(function () {
     Route::get('/with/lending_user2', [LendingController::class, 'lendingUser2']);
     Route::get('/with/copy_book_lending', [CopyController::class, 'copyBookLending']);
     Route::get('/with/user_l_r', [UserController::class, 'userLR']);
+
+    //Egyéb lekérdezések
+    Route::get('/books_at_user', [LendingController::class, 'booksAtUser']);
+    //lenghten($copy_id, $start)
+    //patchet csak thunderben tudjuk tesztelni
+    Route::patch('/lenghten/{copy_id}/{start}', [LendingController::class, 'lenghten']);
+    //mmoreLending/{copy_id}/{db}
+    Route::get('/moreLending/{copy_id}/{db}', [CopyController::class, 'mmoreLending']);
+    Route::get('/bring_back_books', [LendingController::class, 'bringBackBooks']);
 });
 
 //bejelentkezés nélkül is hozzáférhet

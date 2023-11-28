@@ -1,0 +1,39 @@
+modell Controller MIgráció
+
+php artisan serve --host=0.0.0.0 --port=8000
+php artisan migrate
+php artisan migrate:fresh
+
+
+php artisan make:model Task -m
+php artisan make:controller TaskController -m
+
+
+
+
+
+
+composer install
+composer create-project laravel/laravel
+
+A show nál a Controllerekben
+A ___Controler helyett  this-> használunk
+
+Apiba való átszervezés
+A különbség:
+
+-csak a view -k valók a web-be
+get lekérd
+put mindent modosít
+patch csak valamelyiket modosítja
+
+Ha bejelentkezett, akkor a lekérdezésben lesz ilyen : $user = Auth::user();
+401 jogosultsági, hozzáférési hiba
+404 végpont hiba
+
+To few argument to function:  ne hagyd benne a paramétereket.
+Ha api ban vannak az utvonalak, akkor is kell a böngészöben az /api
+library 3pötty settings alap utvoalat beállíthatom
+gizi@gmail.com
+aa123
+dateDiff
